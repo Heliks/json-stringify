@@ -28,6 +28,15 @@ describe('stringify', () => {
     });
   });
 
+  it('should strip undefined properties', () => {
+    const str = stringify({
+      foo: true,
+      bar: undefined
+    });
+
+    expect(str).toBe('{\n\t"foo": true\n}\n');
+  });
+
   it('should add commas if there comes a property afterwards', () => {
     const str = stringify({
       foo: 1,

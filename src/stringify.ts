@@ -91,6 +91,11 @@ function _stringify(data: any, space = '\t', level = 0): string {
     tkTerm = ']';
 
     for (const value of data) {
+      // Strip items where value is "undefined".
+      if (value === undefined) {
+        continue;
+      }
+
       if (typeof value === 'object') {
         // When this block encounters a non-primitive value, force the pretty print.
         compact = false;
@@ -104,6 +109,11 @@ function _stringify(data: any, space = '\t', level = 0): string {
   else {
     for (let key in data) {
       const value = data[ key ];
+
+      // Strip keys where value is "undefined".
+      if (value === undefined) {
+        continue;
+      }
 
       let str;
 
@@ -141,9 +151,8 @@ function _stringify(data: any, space = '\t', level = 0): string {
  *
  * The built-in method is either too compact to be readable by humans or too verbose to
  * be practical. This produces a more compact pretty-print format that remains readable
- * while not blowing up the size of the resulting JSON string.
- *
- * It does this by chopping down blocks (arrays, lists) that only contain primitive values.
+ * while not blowing up the size of the resulting JSON output. It does this by chopping
+ * down blocks (arrays, lists) that only contain primitive values.
  *
  * @param data Data that should be stringified. Supports both arrays and objects as root.
  * @param space (optional) Character that should be used to indent individual lines. By

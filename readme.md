@@ -1,10 +1,9 @@
 Alternative to built-in `JSON.stringify()`.
 
-The built-in `JSON.stringify()` output is too compact to be properly readable for humans while
-its pretty-mode is too verbose for data sets that contains larger arrays or nested objects.
-
-This library produces a compact format that remains readable by humans. It does this by 
-chopping down blocks (arrays, lists) that only contain primitive values.
+The built-in method is either too compact to be readable by humans or too verbose to
+be practical. This produces a more compact pretty-print format that remains readable
+while not blowing up the size of the resulting JSON string. It does this by chopping
+down blocks (arrays, lists) that only contain primitive values.
 
 For example:
 
