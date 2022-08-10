@@ -46,7 +46,7 @@ describe('stringify', () => {
     expect(str).toBe('{\n\t"foo": 1,\n\t"bar": 2\n}\n');
   });
 
-  it('should add trailing comma', () => {
+  it('should not add trailing commas', () => {
     const str = stringify({
       foo: 'bar'
     });
