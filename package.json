@@ -2,7 +2,7 @@
   "author": "Felix Wolf",
   "name": "@heliks/json-stringify",
   "description": "Alternative to built-in JSON.stringify",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "private": false,
