@@ -2,8 +2,8 @@ import { stringify } from './stringify';
 
 
 describe('stringify', () => {
-  describe('primitives', () => {
-    it('should stringify string properties', () => {
+  describe('when stringifying primitive properties', () => {
+    it('should stringify strings', () => {
       const str = stringify({
         foo: 'bar'
       });
@@ -11,7 +11,15 @@ describe('stringify', () => {
       expect(str).toBe('{\n\t"foo": "bar"\n}\n');
     });
 
-    it('should stringify number properties', () => {
+    it('should escape backspace characters inside of strings', () => {
+      const str = stringify({
+        path: 'C:\\a\\b\\c'
+      });
+
+      expect(str).toBe('{\n\t"path": "C:\\\\a\\\\b\\\\c"\n}\n');
+    });
+
+    it('should stringify numbers', () => {
       const str = stringify({
         foo: 1234
       });
@@ -19,7 +27,7 @@ describe('stringify', () => {
       expect(str).toBe('{\n\t"foo": 1234\n}\n');
     });
 
-    it('should stringify boolean properties', () => {
+    it('should stringify booleans', () => {
       const str = stringify({
         foo: true
       });

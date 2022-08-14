@@ -24,7 +24,7 @@ export function pad(str: string, char: string, amount: number): string {
 function stringifyPrimitiveData(value: PrimitiveValue): string {
   switch (typeof value) {
     case 'string':
-      return `"${value}"`;
+      return `"${value.replace(/\\/g, '\\\\')}"`;
     case 'boolean':
       return value ? 'true' : 'false';
     case 'bigint':
